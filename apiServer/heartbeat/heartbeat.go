@@ -1,3 +1,11 @@
+/*
+ * @Author: Aquamarine
+ * @Date: 2023-11-04 15:51:01
+ * @LastEditTime: 2023-11-07 22:23:11
+ * @LastEditors: your name
+ * @Description:
+ * @FilePath: /Distributed/apiServer/heartbeat/heartbeat.go
+ */
 package heartbeat
 
 import (
@@ -19,7 +27,7 @@ var mutex sync.Mutex
 func ListenHeartbeat() {
 	q := rabbitmq.New(os.Getenv("RABBITMQ_SERVER"))
 	defer q.Close()
-	q.Bind("apiServer")
+	q.Bind("apiServers")
 	c := q.Consume()
 	go removeExpiredDataServer()
 	for msg := range c {
