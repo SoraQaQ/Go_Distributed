@@ -1,7 +1,7 @@
 /*
  * @Author: Aquamarine
  * @Date: 2023-11-04 19:24:14
- * @LastEditTime: 2023-11-04 19:40:49
+ * @LastEditTime: 2023-11-08 10:58:55
  * @LastEditors: your name
  * @Description:
  * @FilePath: /Distributed/apiServer/objectstream/PutStream.go
@@ -29,7 +29,7 @@ func NewPutStream(server, object string) *PutStream {
 	reader, writer := io.Pipe()
 	c := make(chan error)
 	go func() {
-		request, _ := http.NewRequest("PUT", "http://"+server+"/ objects/ "+object, reader)
+		request, _ := http.NewRequest("PUT", "http://"+server+"/objects/"+object, reader)
 		client := http.Client{}
 		r, e := client.Do(request)
 		if e == nil && r.StatusCode != http.StatusOK {
