@@ -1,7 +1,7 @@
 /*
  * @Author: Aquamarine
  * @Date: 2023-11-04 23:47:16
- * @LastEditTime: 2023-11-04 23:48:43
+ * @LastEditTime: 2023-11-09 10:51:53
  * @LastEditors: your name
  * @Description:
  * @FilePath: /Distributed/apiServer/objects/objects.go
@@ -18,6 +18,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	if m == http.MethodGet {
 		get(w, r)
+		return
+	}
+	if m == http.MethodDelete {
+		del(w, r)
 		return
 	}
 	w.WriteHeader(http.StatusMethodNotAllowed)
